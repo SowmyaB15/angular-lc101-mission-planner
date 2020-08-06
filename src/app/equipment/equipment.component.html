@@ -13,10 +13,11 @@
 <div class = "displayBox">
     <h3>Cargo Hold: {{cargoHold.length}}/{{maxItems}} Spots Filled</h3>
     <ol>
-        <li *ngFor="let equipment of cargoHold">{{equipment.name}}</li>
+        <li *ngFor="let equipment of cargoHold">{{equipment.name}}
+            <button *ngIf="(cargoHold.length !== 0)" (click)="nearCapacity=removeItem(equipment)">Remove from Cargo Hold</button>
+        </li>
     </ol>
     <p>Mass in Hold: {{cargoMass}} kg</p>
     <p [class.nearMaxMass] = "nearCapacity">Mass Budget Remaining: {{maximumAllowedMass - cargoMass}} kg</p>
     <button (click)="emptyHold()">Empty Hold</button>
 </div>
-
